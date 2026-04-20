@@ -24,7 +24,7 @@ FS_LABEL  = 14
 FS_TICK   = 13
 FS_LEGEND = 12
 
-MU_PER_PX = {"nikon": 0.1205, "leica": 0.339}
+MU_PER_PX = {"nikon": 0.339, "leica": 0.45}
 
 
 def compute_dims(folders, calibrated=False):
