@@ -23,6 +23,7 @@ Annotated microscopy dataset for **Giant Unilamellar Vesicle (GUV)** detection u
   - [Dataset Statistics](#dataset-statistics)
     - [Detailed breakdown](#detailed-breakdown)
     - [Summary by split](#summary-by-split)
+    - [GUV size distribution](#guv-size-distribution)
   - [License](#license)
 
 ---
@@ -46,6 +47,8 @@ GUVs were produced by the **droplet transfer method**, a centrifugation-based em
 | Modalities | RGB, Grayscale |
 | Total annotated images | 1208 |
 | Total annotated GUVs | 14,544 |
+
+![Sample annotated tiles from the GUV dataset. Red bounding boxes mark individual GUVs across different acquisition conditions.](images/fig1_sample_images.png)
 
 ---
 
@@ -240,6 +243,14 @@ GUV_dataset/
 | Test (Nikon) | 50 | 320 | 2541 |
 | Generalization (Leica) | 26 | 104 | 5049 |
 | **Total** | **295** | **1408** | **14,443** |
+
+![Number of images and GUVs per split.](images/fig2a_split_stats.png)
+
+### GUV size distribution
+
+GUV bounding-box sizes (in µm) follow a right-skewed distribution, with most vesicles in the 2–10 µm range. The Leica split shows a narrower spread due to its higher µm/pixel calibration factor.
+
+![Distribution of GUV bounding-box sizes (µm) across splits.](images/fig3d_bbox_sizes_um.png)
 
 ---
 
