@@ -24,14 +24,31 @@ FS_LABEL  = 14
 FS_TICK   = 13
 FS_LEGEND = 12
 
-MU_PER_PX = {"nikon": 0.339, "leica": 0.45}
+MU_PER_PX = {
+    "nikon_high": 0.120,   # high-magnification Nikon (quadrant tiles: _tl/_tr/_bl/_br)
+    "nikon_low":  0.339,   # low-magnification  Nikon (grid tiles: _A1…_D4)
+    "leica":      0.45,
+}
+
+_QUADRANT_SUFFIXES = {"_tl", "_tr", "_bl", "_br"}
+_GRID_ROW_LETTERS  = set("ABCD")
+
+
+def _nikon_mu(stem: str) -> float:
+    """Return µm/pixel for a Nikon tile based on its filename stem."""
+    suffix = stem[-3:]          # e.g. "_bl" or "_B3"
+    if suffix in _QUADRANT_SUFFIXES:
+        return MU_PER_PX["nikon_high"]
+    if len(suffix) == 3 and suffix[1] in _GRID_ROW_LETTERS and suffix[2].isdigit():
+        return MU_PER_PX["nikon_low"]
+    return MU_PER_PX["nikon_low"]   # fallback
 
 
 def compute_dims(folders, calibrated=False):
     """GUV sizes across splits. calibrated=True → µm, else normalised to image diagonal."""
     dims = []
     for folder in folders:
-        mu = MU_PER_PX["leica" if "leica" in folder.lower() else "nikon"] if calibrated else None
+        is_leica   = "leica" in folder.lower()
         split_dir  = DATASET_ROOT / folder
         labels_dir = split_dir / "labels"
         images_dir = split_dir / "images"
@@ -39,6 +56,8 @@ def compute_dims(folders, calibrated=False):
             img_path = images_dir / (lf.stem + ".jpg")
             if not img_path.exists():
                 continue
+            if calibrated:
+                mu = MU_PER_PX["leica"] if is_leica else _nikon_mu(lf.stem)
             W, H = Image.open(img_path).size
             for line in lf.read_text().splitlines():
                 parts = line.strip().split()

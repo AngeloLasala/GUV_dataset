@@ -61,10 +61,11 @@ Phase-contrast microscopy images were acquired using two optical systems:
 
 The spatial calibration factors (µm/pixel) for each system are:
 
-| Microscope | µm/pixel |
-|---|---|
-| Nikon | **0.339** |
-| Leica | **0.45** |
+| Microscope | Magnification | µm/pixel |
+|---|---|---|
+| Nikon | High | **0.120** |
+| Nikon | Low | **0.339** |
+| Leica | — | **0.45** |
 
 Physical grids were overlaid on the samples during acquisition to facilitate systematic traversal of the field of view. Images were saved in RGB format. Acquisitions were performed at two magnification levels on the Nikon system, resulting in different native resolutions (see [Tiling Strategy](#tiling-strategy)).
 
