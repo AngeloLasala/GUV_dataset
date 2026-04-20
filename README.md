@@ -6,16 +6,24 @@ Annotated microscopy dataset for **Giant Unilamellar Vesicle (GUV)** detection u
 
 ## Contents
 
-- [Background](#background)
-- [Dataset Overview](#dataset-overview)
-- [Acquisition Protocol](#acquisition-protocol)
-- [Tiling Strategy](#tiling-strategy)
-- [Dataset Splits](#dataset-splits)
-- [Annotation Format](#annotation-format)
-- [File Naming Convention](#file-naming-convention)
-- [Directory Structure](#directory-structure)
-- [Dataset Statistics](#dataset-statistics)
-- [License](#license)
+- [GUV Detection Dataset](#guv-detection-dataset)
+  - [Contents](#contents)
+  - [Background](#background)
+  - [Dataset Overview](#dataset-overview)
+  - [Acquisition Protocol](#acquisition-protocol)
+  - [Tiling Strategy](#tiling-strategy)
+    - [Tile naming suffixes](#tile-naming-suffixes)
+  - [Dataset Splits](#dataset-splits)
+  - [Annotation Format](#annotation-format)
+  - [File Naming Convention](#file-naming-convention)
+    - [Nikon (high magnification)](#nikon-high-magnification)
+    - [Nikon (low magnification)](#nikon-low-magnification)
+    - [Leica](#leica)
+  - [Directory Structure](#directory-structure)
+  - [Dataset Statistics](#dataset-statistics)
+    - [Detailed breakdown](#detailed-breakdown)
+    - [Summary by split](#summary-by-split)
+  - [License](#license)
 
 ---
 
@@ -47,6 +55,13 @@ Phase-contrast microscopy images were acquired using two optical systems:
 
 - **Nikon [MODEL]** — used for the main training/validation/test dataset
 - **Leica [MODEL]** — used exclusively for cross-microscope generalization evaluation
+
+The spatial calibration factors (µm/pixel) for each system are:
+
+| Microscope | µm/pixel |
+|---|---|
+| Nikon | **0.1205** |
+| Leica | **0.339** |
 
 Physical grids were overlaid on the samples during acquisition to facilitate systematic traversal of the field of view. Images were saved in RGB format. Acquisitions were performed at two magnification levels on the Nikon system, resulting in different native resolutions (see [Tiling Strategy](#tiling-strategy)).
 
@@ -195,7 +210,6 @@ GUV_dataset/
 │       ├── labels/
 │       └── labels.cache
 ├── grey_scale/              # Grayscale versions (structure mirrors rgb/)
-├── CLAUDE.md
 ├── README.md
 └── LICENSE
 ```
