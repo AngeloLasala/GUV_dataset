@@ -245,13 +245,13 @@ GUV_dataset/
 | Generalization (Leica) | 26 | 104 | 5049 |
 | **Total** | **295** | **1408** | **14,443** |
 
-![Number of images and GUVs per split.](images/fig2a_split_stats.png)
+![Number of images and GUVs per split.](images/fig2a_split_stats_renamed.png)
 
 ### GUV size distribution
 
 GUV bounding-box sizes (in µm) follow a right-skewed distribution, with most vesicles in the 2–10 µm range. The Leica split shows a narrower spread due to its higher µm/pixel calibration factor.
 
-![Distribution of GUV bounding-box sizes (µm) across splits.](images/fig3d_bbox_sizes_um.png)
+![Distribution of GUV bounding-box sizes (µm) across splits.](images/fig3d_bbox_sizes_um_renamed.png)
 
 ---
 
