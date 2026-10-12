@@ -113,12 +113,12 @@ Low-magnification Nikon tiles use a row-column grid notation:
 
 Partitioning was performed at the **acquisition level** to prevent data leakage between splits (tiles from the same acquisition are never split across train and val/test).
 
-| Split | Purpose |
-|---|---|
-| `train` | Model training (Nikon only) |
-| `val` | Hyperparameter tuning and model selection (Nikon only) |
-| `test` | Final held-out evaluation (Nikon only) |
-| `*_Leica_1`, `*_Leica_2` | Cross-microscope generalization (Leica only) |
+| Split | Folder | Microscope | Images | GUVs | Purpose |
+|---|---|---|---|---|---|
+| Training | `rgb/train` | Nikon | 744 | 4666 | Model training |
+| Validation | `rgb/val` | Nikon | 240 | 2187 | Hyperparameter tuning and model selection |
+| Test | `rgb/test` | Nikon | 320 | 2541 | Final held-out evaluation |
+| Generalization | `rgb/generalization` | Leica | 104 | 5049 | Cross-microscope generalization (evaluation only) |
 
 ---
 
